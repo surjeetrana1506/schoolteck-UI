@@ -92,9 +92,12 @@ export const InteractiveSandbox: React.FC<InteractiveSandboxProps> = ({ onOpenBo
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Simple Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
-            Interactive Preview
-          </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-800 shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+            <span>Interactive Preview</span>
+          </div>
           <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             See how simple it is to use.
           </h2>
@@ -120,11 +123,11 @@ export const InteractiveSandbox: React.FC<InteractiveSandboxProps> = ({ onOpenBo
               onClick={() => setDeviceMode('admin')}
               className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 deviceMode === 'admin'
-                  ? 'bg-blue-600 text-white shadow-xs'
+                  ? 'bg-slate-900 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Monitor className="w-4 h-4" />
+              <Monitor className="w-4 h-4 text-cyan-400" />
               <span>Admin Web Portal</span>
             </button>
             <button
@@ -132,29 +135,29 @@ export const InteractiveSandbox: React.FC<InteractiveSandboxProps> = ({ onOpenBo
               onClick={() => setDeviceMode('student')}
               className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 deviceMode === 'student'
-                  ? 'bg-blue-600 text-white shadow-xs'
+                  ? 'bg-slate-900 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Smartphone className="w-4 h-4" />
+              <Smartphone className="w-4 h-4 text-purple-400" />
               <span>Parent Mobile App</span>
             </button>
           </div>
 
-          {/* Quick Actions */}
+          {/* Quick Actions with distinct multicolor buttons */}
           <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
             <button
               onClick={() => handleTriggerEvent('attendance')}
-              className="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-100 border border-sky-200 text-sky-800 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
             >
-              <Zap className="w-3.5 h-3.5 text-emerald-600" />
+              <Zap className="w-3.5 h-3.5 text-sky-600" />
               <span>Test 1-Tap Attendance</span>
             </button>
             <button
               onClick={() => handleTriggerEvent('fee')}
-              className="px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-800 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
             >
-              <Zap className="w-3.5 h-3.5 text-blue-600" />
+              <Zap className="w-3.5 h-3.5 text-emerald-600" />
               <span>Test UPI Fee Payment</span>
             </button>
           </div>
@@ -175,8 +178,8 @@ export const InteractiveSandbox: React.FC<InteractiveSandboxProps> = ({ onOpenBo
           ) : (
             <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 flex flex-col items-center shadow-md">
               <div className="max-w-md text-center mb-6">
-                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold mb-2">
-                  <Smartphone className="w-3.5 h-3.5" />
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-purple-50 text-purple-800 border border-purple-200 text-xs font-semibold mb-2">
+                  <Smartphone className="w-3.5 h-3.5 text-purple-600" />
                   Parent & Student App
                 </span>
                 <h3 className="text-lg font-bold text-slate-900">
@@ -207,10 +210,10 @@ export const InteractiveSandbox: React.FC<InteractiveSandboxProps> = ({ onOpenBo
           </div>
           <button
             onClick={onOpenBookDemo}
-            className="shrink-0 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
+            className="shrink-0 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-semibold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
           >
             <span>Schedule Demo</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 text-rose-400" />
           </button>
         </div>
       </div>

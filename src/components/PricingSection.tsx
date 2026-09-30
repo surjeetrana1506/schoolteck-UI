@@ -20,9 +20,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenBookDemo }
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Simple Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
-            Simple Pricing
-          </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-800 shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+            <span>Simple Pricing</span>
+          </div>
           <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Transparent pricing for any school size.
           </h2>
@@ -37,18 +40,18 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenBookDemo }
               onClick={() => setIsAnnual(true)}
               className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 isAnnual
-                  ? 'bg-white text-blue-700 shadow-xs'
+                  ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Annual Billing <span className="text-[11px] ml-1 text-emerald-700 font-semibold">(Save 20%)</span>
+              Annual Billing <span className="text-[11px] ml-1 text-rose-600 font-semibold">(Save 20%)</span>
             </button>
             <button
               id="pricing-billing-monthly"
               onClick={() => setIsAnnual(false)}
               className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 !isAnnual
-                  ? 'bg-white text-blue-700 shadow-xs'
+                  ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -67,12 +70,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenBookDemo }
                 id={`pricing-plan-${plan.id}`}
                 className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all bg-white ${
                   plan.highlighted
-                    ? 'border-2 border-blue-600 shadow-lg relative lg:-translate-y-2'
+                    ? 'border-2 border-indigo-500 shadow-lg relative lg:-translate-y-2'
                     : 'border border-slate-200 shadow-xs hover:border-slate-300'
                 }`}
               >
                 {plan.highlighted && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-0.5 rounded-full bg-blue-600 text-white text-[11px] font-bold uppercase tracking-wider shadow-xs">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-0.5 rounded-full bg-gradient-to-r from-rose-500 to-indigo-600 text-white text-[11px] font-bold uppercase tracking-wider shadow-xs">
                     Most Popular
                   </div>
                 )}
@@ -92,7 +95,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenBookDemo }
                       </span>
                       <span className="text-xs text-slate-500 font-medium">/ student / month</span>
                     </div>
-                    <div className="text-[11px] text-emerald-700 font-medium mt-1">
+                    <div className="text-[11px] text-slate-500 font-medium mt-1">
                       Billed {isAnnual ? 'annually' : 'monthly'} · Full support included
                     </div>
                   </div>
@@ -104,7 +107,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenBookDemo }
                     <ul className="space-y-2 text-xs text-slate-600">
                       {plan.features.map((feature, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-2">
-                          <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                          <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                           <span>{feature}</span>
                         </li>
                       ))}
@@ -118,7 +121,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenBookDemo }
                     onClick={() => onOpenBookDemo(plan.name)}
                     className={`w-full py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer ${
                       plan.highlighted
-                        ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-xs'
+                        ? 'bg-gradient-to-r from-rose-500 to-indigo-600 hover:opacity-95 text-white shadow-xs'
                         : 'bg-slate-100 hover:bg-slate-200 text-slate-800'
                     }`}
                   >
@@ -152,11 +155,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenBookDemo }
                 >
                   <button
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                    className="w-full p-4 sm:p-5 text-left flex items-center justify-between text-sm sm:text-base font-semibold text-slate-900 hover:text-blue-600 transition-colors cursor-pointer"
+                    className="w-full p-4 sm:p-5 text-left flex items-center justify-between text-sm sm:text-base font-semibold text-slate-900 hover:text-indigo-600 transition-colors cursor-pointer"
                   >
                     <span>{faq.question}</span>
                     {isOpen ? (
-                      <ChevronUp className="w-5 h-5 text-blue-600 shrink-0 ml-2" />
+                      <ChevronUp className="w-5 h-5 text-indigo-600 shrink-0 ml-2" />
                     ) : (
                       <ChevronDown className="w-5 h-5 text-slate-400 shrink-0 ml-2" />
                     )}

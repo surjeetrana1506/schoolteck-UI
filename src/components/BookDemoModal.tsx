@@ -56,17 +56,20 @@ export const BookDemoModal: React.FC<BookDemoModalProps> = ({ isOpen, onClose, i
         {!isSubmitted ? (
           <div>
             <div className="mb-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">
-                Free 15-Minute Demo
-              </span>
-              <h3 className="text-2xl font-bold text-slate-900 mt-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 mb-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                <span>Free 15-Minute Demo</span>
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mt-1">
                 See SchoolTek in Action
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mt-1">
                 Tell us a few details and our education specialist will set up a customized demo for your school.
               </p>
               {initialPlan && (
-                <div className="mt-2 text-xs text-blue-700 bg-blue-50 p-2 rounded-lg font-medium">
+                <div className="mt-2 text-xs text-indigo-900 bg-indigo-50 p-2 rounded-lg font-medium border border-indigo-200">
                   Plan selected: <span className="font-bold">{initialPlan}</span>
                 </div>
               )}
@@ -85,7 +88,7 @@ export const BookDemoModal: React.FC<BookDemoModalProps> = ({ isOpen, onClose, i
                     placeholder="e.g. Dr. Rajesh Kumar, Principal"
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:bg-white"
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-indigo-500 focus:bg-white"
                   />
                 </div>
               </div>
@@ -102,7 +105,7 @@ export const BookDemoModal: React.FC<BookDemoModalProps> = ({ isOpen, onClose, i
                     placeholder="e.g. Modern Heritage Public School"
                     value={schoolName}
                     onChange={(e) => setSchoolName(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:bg-white"
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-indigo-500 focus:bg-white"
                   />
                 </div>
               </div>
@@ -117,10 +120,10 @@ export const BookDemoModal: React.FC<BookDemoModalProps> = ({ isOpen, onClose, i
                     <input
                       type="tel"
                       required
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 90391 95325"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:bg-white"
+                      className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-indigo-500 focus:bg-white"
                     />
                   </div>
                 </div>
@@ -137,7 +140,7 @@ export const BookDemoModal: React.FC<BookDemoModalProps> = ({ isOpen, onClose, i
                       placeholder="principal@school.edu.in"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:bg-white"
+                      className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-indigo-500 focus:bg-white"
                     />
                   </div>
                 </div>
@@ -155,7 +158,7 @@ export const BookDemoModal: React.FC<BookDemoModalProps> = ({ isOpen, onClose, i
                     max={20000}
                     value={studentCount}
                     onChange={(e) => setStudentCount(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:bg-white"
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-indigo-500 focus:bg-white"
                   />
                 </div>
               </div>
@@ -164,14 +167,14 @@ export const BookDemoModal: React.FC<BookDemoModalProps> = ({ isOpen, onClose, i
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <span>Scheduling Demo...</span>
                   ) : (
                     <>
                       <span>Book Free School Demo</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-4 h-4 text-rose-400" />
                     </>
                   )}
                 </button>
@@ -202,7 +205,7 @@ export const BookDemoModal: React.FC<BookDemoModalProps> = ({ isOpen, onClose, i
 
             <button
               onClick={handleResetAndClose}
-              className="mt-6 px-6 py-2.5 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 cursor-pointer"
+              className="mt-6 px-6 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 cursor-pointer"
             >
               Done
             </button>

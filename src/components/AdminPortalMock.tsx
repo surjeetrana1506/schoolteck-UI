@@ -45,7 +45,7 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
       <aside className="w-full md:w-56 bg-slate-50 border-r border-slate-200 p-4 flex flex-col justify-between shrink-0">
         <div>
           <div className="flex items-center gap-2.5 pb-4 mb-4 border-b border-slate-200">
-            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-xs">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 via-rose-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-xs">
               ST
             </div>
             <div>
@@ -63,11 +63,11 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
 
           <nav className="space-y-1">
             {[
-              { id: 'overview', label: 'Autonomous Hub', icon: Sparkles },
-              { id: 'attendance', label: 'Smart Attendance', icon: CheckCheck, count: `${attendanceRate}%` },
-              { id: 'fees', label: 'Bank Fee Sync', icon: CreditCard, count: `₹${(feesCollected/100000).toFixed(1)}L` },
-              { id: 'timetable', label: 'Timetable AI', icon: Calendar, count: '4 Auto' },
-              { id: 'fleet', label: 'Fleet Telematics', icon: Bus, count: '18 Live' },
+              { id: 'overview', label: 'Autonomous Hub', icon: Sparkles, iconColor: 'text-amber-500' },
+              { id: 'attendance', label: 'Smart Attendance', icon: CheckCheck, count: `${attendanceRate}%`, iconColor: 'text-sky-500' },
+              { id: 'fees', label: 'Bank Fee Sync', icon: CreditCard, count: `₹${(feesCollected/100000).toFixed(1)}L`, iconColor: 'text-emerald-500' },
+              { id: 'timetable', label: 'Timetable AI', icon: Calendar, count: '4 Auto', iconColor: 'text-purple-500' },
+              { id: 'fleet', label: 'Fleet Telematics', icon: Bus, count: '18 Live', iconColor: 'text-rose-500' },
             ].map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -78,16 +78,16 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
                   onClick={() => setActiveTab(item.id as any)}
                   className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-blue-50 text-blue-700 border border-blue-200 font-semibold'
+                      ? 'bg-white text-slate-900 border border-slate-300 font-bold shadow-xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }`}
                 >
                   <div className="flex items-center gap-2">
-                    <Icon className="w-4 h-4" />
+                    <Icon className={`w-4 h-4 ${item.iconColor}`} />
                     <span>{item.label}</span>
                   </div>
                   {item.count && (
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-white text-slate-600 font-mono border border-slate-200">
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-mono border border-slate-200">
                       {item.count}
                     </span>
                   )}
@@ -98,12 +98,12 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
         </div>
 
         <div className="pt-4 border-t border-slate-200">
-          <div className="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200">
-            <div className="flex items-center gap-1.5 text-emerald-800 text-xs font-semibold">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+          <div className="p-2.5 rounded-lg bg-white border border-slate-200 shadow-2xs">
+            <div className="flex items-center gap-1.5 text-slate-800 text-xs font-semibold">
+              <ShieldCheck className="w-3.5 h-3.5 text-indigo-600" />
               <span>Zero Manual Slips</span>
             </div>
-            <p className="text-[10px] text-slate-600 mt-1 leading-relaxed">
+            <p className="text-[10px] text-slate-500 mt-1 leading-relaxed">
               All 1,480 student records auto-synchronized with zero clerical intervention.
             </p>
           </div>
@@ -122,7 +122,7 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
                 placeholder="Search student ID, parent phone, or bus route..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-md text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white"
+                className="w-full pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-md text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:bg-white"
               />
             </div>
           </div>
@@ -134,13 +134,13 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
             </div>
             <button 
               id="admin-alert-bell"
-              className="p-1.5 rounded-md hover:bg-slate-100 text-slate-500 relative"
+              className="p-1.5 rounded-md hover:bg-slate-100 text-slate-500 relative cursor-pointer"
               aria-label="Admin Notifications"
             >
               <Bell className="w-4 h-4" />
-              <span className="w-2 h-2 rounded-full bg-blue-600 absolute top-1 right-1"></span>
+              <span className="w-2 h-2 rounded-full bg-emerald-600 absolute top-1 right-1"></span>
             </button>
-            <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-xs font-bold text-white shadow-xs">
+            <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-600 flex items-center justify-center text-xs font-bold text-white shadow-xs">
               DR
             </div>
           </div>
@@ -150,36 +150,36 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
         <div className="p-4 md:p-5 overflow-y-auto space-y-4 flex-1">
           {/* Top Metric Bar */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-            <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs">
+            <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs border-l-3 border-l-sky-500">
               <div className="flex items-center justify-between text-slate-500 text-xs mb-1">
                 <span>Autonomous Attendance</span>
-                <span className="text-emerald-700 bg-emerald-50 border border-emerald-200 text-[10px] px-1 rounded font-mono">1-Tap App</span>
+                <span className="text-sky-700 bg-sky-50 border border-sky-200 text-[10px] px-1 rounded font-mono">1-Tap App</span>
               </div>
               <div className="text-xl font-bold text-slate-900 font-mono flex items-baseline gap-1.5">
                 {attendanceCount}
                 <span className="text-xs text-slate-400 font-normal">/ {totalStudents}</span>
               </div>
-              <div className="text-[11px] text-emerald-700 mt-1 flex items-center gap-1 font-medium">
+              <div className="text-[11px] text-sky-700 mt-1 flex items-center gap-1 font-medium">
                 <TrendingUp className="w-3 h-3" />
                 <span>{attendanceRate}% present (0 roll calls)</span>
               </div>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs">
+            <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs border-l-3 border-l-emerald-500">
               <div className="flex items-center justify-between text-slate-500 text-xs mb-1">
                 <span>Auto-Reconciled Fees</span>
-                <span className="text-blue-700 bg-blue-50 border border-blue-200 text-[10px] px-1 rounded font-mono">Bank API</span>
+                <span className="text-emerald-700 bg-emerald-50 border border-emerald-200 text-[10px] px-1 rounded font-mono">Bank API</span>
               </div>
               <div className="text-xl font-bold text-slate-900 font-mono">
                 ₹{feesCollected.toLocaleString('en-IN')}
               </div>
-              <div className="text-[11px] text-blue-700 mt-1 flex items-center gap-1 font-medium">
+              <div className="text-[11px] text-emerald-700 mt-1 flex items-center gap-1 font-medium">
                 <CheckCircle2 className="w-3 h-3" />
                 <span>0 manual cashier vouchers</span>
               </div>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs">
+            <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs border-l-3 border-l-amber-500">
               <div className="flex items-center justify-between text-slate-500 text-xs mb-1">
                 <span>Active Bus Telematics</span>
                 <span className="text-amber-700 bg-amber-50 border border-amber-200 text-[10px] px-1 rounded font-mono">GPS IoT</span>
@@ -192,7 +192,7 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
               </div>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs">
+            <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs border-l-3 border-l-purple-500">
               <div className="flex items-center justify-between text-slate-500 text-xs mb-1">
                 <span>Teacher Substitution</span>
                 <span className="text-purple-700 bg-purple-50 border border-purple-200 text-[10px] px-1 rounded font-mono">AI Engine</span>
@@ -209,18 +209,19 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
           {/* Interactive Trigger Bar (Shows How Zero-Manual-Entry Works in Real-time) */}
           <div className="p-3 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 text-[10px] font-bold uppercase tracking-wider">
-                Live Simulator
+              <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-800 border border-slate-200 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
+                Simulator
               </span>
               <span className="text-xs text-slate-700 font-medium">
-                Test Zero-Manual automations in real time:
+                Test multi-channel automations in real time:
               </span>
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <button
                 id="btn-simulate-gate"
                 onClick={() => onTriggerEvent('attendance')}
-                className="px-2.5 py-1.5 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-semibold transition-all flex items-center gap-1 shadow-xs active:scale-95 cursor-pointer"
+                className="px-2.5 py-1.5 rounded bg-sky-600 hover:bg-sky-700 text-white text-[11px] font-semibold transition-all flex items-center gap-1 shadow-xs active:scale-95 cursor-pointer"
               >
                 <CheckCheck className="w-3 h-3" />
                 Mark 25 Attendance
@@ -228,7 +229,7 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
               <button
                 id="btn-simulate-fee"
                 onClick={() => onTriggerEvent('fee')}
-                className="px-2.5 py-1.5 rounded bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-semibold transition-all flex items-center gap-1 shadow-xs active:scale-95 cursor-pointer"
+                className="px-2.5 py-1.5 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-semibold transition-all flex items-center gap-1 shadow-xs active:scale-95 cursor-pointer"
               >
                 <CreditCard className="w-3 h-3" />
                 Simulate UPI Fee Payment
@@ -302,7 +303,7 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
                 <div className="space-y-2 text-xs">
                   <div className="p-2 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <CheckCheck className="w-3.5 h-3.5 text-emerald-600" />
+                      <CheckCheck className="w-3.5 h-3.5 text-sky-600" />
                       <span className="text-slate-700">Classroom 1-Tap App Roster</span>
                     </div>
                     <span className="text-[10px] text-emerald-700 font-mono font-bold">ONLINE</span>
@@ -310,10 +311,10 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
 
                   <div className="p-2 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <CreditCard className="w-3.5 h-3.5 text-blue-600" />
+                      <CreditCard className="w-3.5 h-3.5 text-emerald-600" />
                       <span className="text-slate-700">UPI/Bank Direct Ledger</span>
                     </div>
-                    <span className="text-[10px] text-blue-700 font-mono font-bold">SYNCED</span>
+                    <span className="text-[10px] text-emerald-700 font-mono font-bold">SYNCED</span>
                   </div>
 
                   <div className="p-2 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between">
@@ -333,8 +334,8 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
                   </div>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-blue-50 border border-blue-100 text-[11px] text-slate-700">
-                  <div className="font-semibold text-blue-900 mb-0.5">Admin Benefit:</div>
+                <div className="p-2.5 rounded-lg bg-emerald-50/70 border border-emerald-100 text-[11px] text-slate-700">
+                  <div className="font-semibold text-emerald-900 mb-0.5">Admin Benefit:</div>
                   Zero manual roll call, zero fee tally errors, and zero parent bus calls.
                 </div>
               </div>
@@ -427,7 +428,7 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                      <CreditCard className="w-4 h-4 text-blue-600" />
+                      <CreditCard className="w-4 h-4 text-emerald-600" />
                       <span>Bank Webhook Auto-Reconciliation Engine</span>
                     </h4>
                     <p className="text-xs text-slate-500">
@@ -436,7 +437,7 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
                   </div>
                   <button
                     onClick={() => onTriggerEvent('fee')}
-                    className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold flex items-center gap-1.5 cursor-pointer active:scale-95"
+                    className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center gap-1.5 cursor-pointer active:scale-95"
                   >
                     <CreditCard className="w-3.5 h-3.5" />
                     <span>Simulate UPI Fee Payment (₹24,500)</span>
@@ -475,7 +476,7 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
                       </div>
                       <div className="text-right">
                         <div className="font-mono font-bold text-emerald-700">{tx.amt}</div>
-                        <div className="text-[10px] text-blue-600 font-medium">{tx.status}</div>
+                        <div className="text-[10px] text-emerald-700 font-medium">{tx.status}</div>
                       </div>
                     </div>
                   ))}
@@ -579,7 +580,7 @@ export const AdminPortalMock: React.FC<AdminPortalMockProps> = ({
                       <div className="text-slate-700">Next: <span className="text-amber-700 font-semibold">{busItem.nextStop}</span></div>
                       <div className="flex justify-between text-[11px] pt-1 border-t border-slate-200">
                         <span className="text-slate-600">Students Onboard: {busItem.onBoard}</span>
-                        <span className="text-blue-700 font-semibold">{busItem.eta}</span>
+                        <span className="text-emerald-700 font-semibold">{busItem.eta}</span>
                       </div>
                     </div>
                   ))}

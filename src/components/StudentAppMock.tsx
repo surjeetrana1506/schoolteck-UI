@@ -70,7 +70,7 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
           {/* App Header */}
           <div className="px-4 py-2.5 flex items-center justify-between border-b border-slate-800/80 bg-slate-900/90 z-10">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-blue-500 flex items-center justify-center text-xs font-bold text-white shadow-md">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-400 via-rose-500 to-indigo-500 flex items-center justify-center text-xs font-bold text-white shadow-md">
                 MP
               </div>
               <div>
@@ -84,7 +84,7 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
               aria-label="Student Notifications"
             >
               <Bell className="w-3.5 h-3.5" />
-              <span className="w-2 h-2 rounded-full bg-emerald-400 absolute top-0.5 right-0.5 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-rose-500 absolute top-0.5 right-0.5 animate-pulse"></span>
             </button>
           </div>
 
@@ -104,13 +104,13 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
             {activeMobileTab === 'home' && (
               <>
                 {/* Gate Attendance Auto-Card */}
-                <div className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30">
+                <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-emerald-400 text-xs font-semibold">
                       <ShieldCheck className="w-4 h-4" />
                       <span>Morning Attendance: Marked</span>
                     </div>
-                    <span className="text-[10px] text-emerald-400 font-mono bg-emerald-950 px-1.5 py-0.5 rounded border border-emerald-800/60">
+                    <span className="text-[10px] text-emerald-400 font-mono bg-slate-900 px-1.5 py-0.5 rounded border border-emerald-800/60">
                       Auto-Logged
                     </span>
                   </div>
@@ -124,7 +124,7 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
                 <div className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 space-y-2">
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-bold text-slate-200 flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-blue-400" />
+                      <Calendar className="w-3.5 h-3.5 text-sky-400" />
                       Today's Live Timetable
                     </span>
                     <span className="text-[10px] text-slate-400 font-mono">Friday</span>
@@ -150,7 +150,7 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
                       <span className="text-[10px] text-purple-300 font-mono animate-pulse">Now</span>
                     </div>
 
-                    <div className="p-2 rounded-lg bg-slate-800/80 flex items-center justify-between border-l-2 border-slate-600">
+                    <div className="p-2 rounded-lg bg-slate-800/80 flex items-center justify-between border-l-2 border-sky-400">
                       <div>
                         <div className="font-semibold text-slate-300">11:00 AM · English Lit</div>
                         <div className="text-[10px] text-slate-400">Mrs. Davis · Room 201</div>
@@ -165,7 +165,7 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
                   <button
                     id="mobile-quick-bus-btn"
                     onClick={() => setActiveMobileTab('bus')}
-                    className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/20 text-left transition-all cursor-pointer"
+                    className="p-2.5 rounded-xl bg-amber-500/15 border border-amber-500/40 hover:bg-amber-500/25 text-left transition-all cursor-pointer"
                   >
                     <Bus className="w-4 h-4 text-amber-400 mb-1" />
                     <div className="text-xs font-bold text-amber-300">School Bus</div>
@@ -175,10 +175,10 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
                   <button
                     id="mobile-quick-fees-btn"
                     onClick={() => setActiveMobileTab('fees')}
-                    className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/30 hover:bg-blue-500/20 text-left transition-all cursor-pointer"
+                    className="p-2.5 rounded-xl bg-rose-500/15 border border-rose-500/40 hover:bg-rose-500/25 text-left transition-all cursor-pointer"
                   >
-                    <CreditCard className="w-4 h-4 text-blue-400 mb-1" />
-                    <div className="text-xs font-bold text-blue-300">Fee Portal</div>
+                    <CreditCard className="w-4 h-4 text-rose-400 mb-1" />
+                    <div className="text-xs font-bold text-rose-300">Fee Portal</div>
                     <div className="text-[10px] text-slate-400">
                       {isFeePaid ? 'Cleared (0 Due)' : 'Term 2: ₹21,500 Due'}
                     </div>
@@ -210,8 +210,8 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:24px_24px] opacity-30"></div>
 
                   {/* Simulated Path Line */}
-                  <div className="absolute top-12 left-8 right-8 h-1 bg-blue-500/40 rounded-full">
-                    <div className="w-2/3 h-full bg-blue-500 rounded-full relative">
+                  <div className="absolute top-12 left-8 right-8 h-1 bg-emerald-500/40 rounded-full">
+                    <div className="w-2/3 h-full bg-emerald-500 rounded-full relative">
                       <div className="w-4 h-4 rounded-full bg-amber-400 border-2 border-slate-950 absolute -right-2 -top-1.5 shadow-lg animate-pulse flex items-center justify-center text-[8px] text-slate-950 font-bold">
                         🚌
                       </div>
@@ -270,7 +270,7 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
                       onClick={() => setShowReceiptModal(true)}
                       className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5 mx-auto border border-slate-700"
                     >
-                      <FileText className="w-3.5 h-3.5 text-blue-400" />
+                      <FileText className="w-3.5 h-3.5 text-emerald-400" />
                       View Official PDF Receipt
                     </button>
                   </div>
@@ -298,9 +298,9 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
                     <button
                       id="mobile-pay-fee-action"
                       onClick={handlePay}
-                      className="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all active:scale-98 cursor-pointer"
+                      className="w-full py-2.5 rounded-xl bg-gradient-to-r from-rose-500 via-purple-600 to-indigo-600 hover:opacity-95 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all active:scale-98 cursor-pointer"
                     >
-                      <CreditCard className="w-4 h-4" />
+                      <CreditCard className="w-4 h-4 text-white" />
                       1-Click Pay with UPI / RuPay (₹21,500)
                     </button>
                     <div className="text-[10px] text-slate-400 text-center">
@@ -312,12 +312,12 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
             )}
 
             {activeMobileTab === 'id' && (
-              <div className="p-3 rounded-xl bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 border border-indigo-500/30 text-center space-y-3">
-                <div className="text-[10px] uppercase font-bold tracking-wider text-indigo-400">
+              <div className="p-3 rounded-xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-purple-500/30 text-center space-y-3">
+                <div className="text-[10px] uppercase font-bold tracking-wider text-purple-400">
                   SchoolTek Partner Academy · Student Pass
                 </div>
 
-                <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 mx-auto flex items-center justify-center text-xl font-bold text-white shadow-lg border-2 border-indigo-400">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-amber-400 via-rose-500 to-indigo-600 mx-auto flex items-center justify-center text-xl font-bold text-white shadow-lg border-2 border-purple-400">
                   MP
                 </div>
 
@@ -341,10 +341,10 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
           {/* Mobile Bottom Navigation Bar */}
           <div className="h-14 bg-slate-950 border-t border-slate-800/80 px-4 flex items-center justify-around text-[10px] text-slate-400 z-10">
             {[
-              { id: 'home', label: 'Today', icon: Clock },
-              { id: 'bus', label: 'Bus GPS', icon: Bus },
-              { id: 'fees', label: 'Fees', icon: CreditCard },
-              { id: 'id', label: 'Digital ID', icon: QrCode },
+              { id: 'home', label: 'Today', icon: Clock, activeColor: 'text-cyan-400' },
+              { id: 'bus', label: 'Bus GPS', icon: Bus, activeColor: 'text-amber-400' },
+              { id: 'fees', label: 'Fees', icon: CreditCard, activeColor: 'text-rose-400' },
+              { id: 'id', label: 'Digital ID', icon: QrCode, activeColor: 'text-purple-400' },
             ].map((tab) => {
               const Icon = tab.icon;
               const isActive = activeMobileTab === tab.id;
@@ -354,7 +354,7 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
                   id={`mobile-tab-${tab.id}`}
                   onClick={() => setActiveMobileTab(tab.id as any)}
                   className={`flex flex-col items-center gap-1 transition-all ${
-                    isActive ? 'text-blue-400 font-bold' : 'hover:text-slate-200'
+                    isActive ? `${tab.activeColor} font-bold` : 'hover:text-slate-200'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -409,7 +409,7 @@ export const StudentAppMock: React.FC<StudentAppMockProps> = ({
             <div className="pt-2 border-t border-slate-800 flex gap-2">
               <button
                 onClick={() => setShowReceiptModal(false)}
-                className="w-full py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold"
+                className="w-full py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold cursor-pointer border border-slate-700"
               >
                 Close Receipt Preview
               </button>

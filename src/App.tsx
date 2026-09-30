@@ -5,7 +5,6 @@ import { SimpleFeatures } from './components/SimpleFeatures';
 import { InteractiveSandbox } from './components/InteractiveSandbox';
 import { HowItWorks } from './components/HowItWorks';
 import { PricingSection } from './components/PricingSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
 import { Footer } from './components/Footer';
 import { BookDemoModal } from './components/BookDemoModal';
 
@@ -26,7 +25,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col selection:bg-blue-600 selection:text-white antialiased">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col selection:bg-indigo-600 selection:text-white antialiased">
       {/* Sticky Header Navigation */}
       <Navbar
         onOpenBookDemo={() => handleOpenDemoModal()}
@@ -61,9 +60,6 @@ export default function App() {
         <PricingSection
           onOpenBookDemo={handleOpenDemoModal}
         />
-
-        {/* Verified School Leader Testimonials */}
-        <TestimonialsSection />
       </main>
 
       {/* Clean Footer */}

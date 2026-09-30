@@ -22,10 +22,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="relative pt-28 pb-16 md:pt-36 md:pb-20 overflow-hidden bg-gradient-to-b from-white via-slate-50/50 to-slate-100/60 text-slate-900 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Simple Badge */}
+        {/* Simple Multicolor Badge */}
         <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs sm:text-sm font-semibold shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-slate-800 text-xs sm:text-sm font-semibold shadow-xs">
+            <div className="flex items-center -space-x-1">
+              <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span className="w-2 h-2 rounded-full bg-rose-500"></span>
+              <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+              <span className="w-2 h-2 rounded-full bg-cyan-500"></span>
+            </div>
             <span>All-in-One School Software</span>
             <span className="text-slate-300">·</span>
             <span className="text-slate-600 font-medium">Web Portal & Mobile Apps</span>
@@ -36,7 +41,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.12]">
             School management, <br className="hidden sm:inline" />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-rose-500 to-indigo-600">
               made simple.
             </span>
           </h1>
@@ -50,10 +55,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <button
               id="hero-primary-demo-btn"
               onClick={onOpenBookDemo}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm sm:text-base shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-98"
             >
               <span>Book a Free Demo</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-rose-400" />
             </button>
 
             <button
@@ -61,26 +66,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               onClick={onScrollToSandbox}
               className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-sm sm:text-base shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Monitor className="w-4 h-4 text-blue-600" />
+              <Monitor className="w-4 h-4 text-indigo-600" />
               <span>Explore Live Preview</span>
             </button>
           </div>
 
-          {/* 3 Simple Key Stats */}
-          <div className="mt-10 pt-8 border-t border-slate-200/80 grid grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-900">450+</div>
-              <div className="text-xs sm:text-sm text-slate-600 font-medium mt-0.5">Partner Schools</div>
-            </div>
-            <div className="text-center border-x border-slate-200">
-              <div className="text-2xl sm:text-3xl font-extrabold text-blue-600">15 Sec</div>
-              <div className="text-xs sm:text-sm text-slate-600 font-medium mt-0.5">Class Attendance</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-emerald-600">99.4%</div>
-              <div className="text-xs sm:text-sm text-slate-600 font-medium mt-0.5">On-Time Fees</div>
-            </div>
-          </div>
+
         </div>
 
         {/* Clean Hero Preview Frame */}
@@ -99,7 +90,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
               <div className="p-4 sm:p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-white/80 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-indigo-600 text-white flex items-center justify-center shrink-0 shadow-xs">
                     <Monitor className="w-5 h-5" />
                   </div>
                   <div>
@@ -114,10 +105,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
                 <button
                   onClick={onScrollToSandbox}
-                  className="shrink-0 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="shrink-0 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs transition-all flex items-center gap-1.5 cursor-pointer"
                 >
                   <span>Try It Below</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 text-rose-400" />
                 </button>
               </div>
             </div>
