@@ -1,79 +1,35 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
-import { SimpleFeatures } from './components/SimpleFeatures';
-import { InteractiveSandbox } from './components/InteractiveSandbox';
+import { ProductTour } from './components/ProductTour';
+import { Modules } from './components/Modules';
+import { Trust, Faq } from './components/TrustAndFaq';
 import { HowItWorks } from './components/HowItWorks';
-import { PricingSection } from './components/PricingSection';
 import { Footer } from './components/Footer';
 import { BookDemoModal } from './components/BookDemoModal';
 
 export default function App() {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
-  const [selectedPlanForDemo, setSelectedPlanForDemo] = useState<string | undefined>(undefined);
-
-  const handleOpenDemoModal = (planName?: string) => {
-    setSelectedPlanForDemo(planName);
-    setIsDemoModalOpen(true);
-  };
-
-  const handleScrollToSandbox = () => {
-    const el = document.getElementById('live-sandbox');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const [isDemoOpen, setIsDemoOpen] = useState(false);
+  const openDemo = () => setIsDemoOpen(true);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col selection:bg-indigo-600 selection:text-white antialiased">
-      {/* Sticky Header Navigation */}
-      <Navbar
-        onOpenBookDemo={() => handleOpenDemoModal()}
-        onScrollToSandbox={handleScrollToSandbox}
-      />
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:px-3 focus:py-2 focus:rounded-lg">
+        Skip to content
+      </a>
+      <Navbar onOpenBookDemo={openDemo} />
 
-      {/* Main Content */}
-      <main className="flex-1">
-        {/* Simple, Punchy Hero Section */}
-        <HeroSection
-          onOpenBookDemo={() => handleOpenDemoModal()}
-          onScrollToSandbox={handleScrollToSandbox}
-        />
-
-        {/* 4 Core Features (Clean, Visual, Direct) */}
-        <SimpleFeatures
-          onOpenBookDemo={() => handleOpenDemoModal()}
-          onScrollToPreview={handleScrollToSandbox}
-        />
-
-        {/* Live Interactive Preview (Admin Portal & Parent App) */}
-        <InteractiveSandbox
-          onOpenBookDemo={() => handleOpenDemoModal()}
-        />
-
-        {/* Simple 3-Step Setup */}
-        <HowItWorks
-          onOpenBookDemo={() => handleOpenDemoModal()}
-        />
-
-        {/* Transparent Pricing Plans & FAQ */}
-        <PricingSection
-          onOpenBookDemo={handleOpenDemoModal}
-        />
+      <main id="main" className="flex-1">
+        <HeroSection onOpenBookDemo={openDemo} />
+        <ProductTour />
+        <Modules onOpenBookDemo={openDemo} />
+        <Trust />
+        <HowItWorks onOpenBookDemo={openDemo} />
+        <Faq />
       </main>
 
-      {/* Clean Footer */}
-      <Footer
-        onOpenBookDemo={() => handleOpenDemoModal()}
-        onScrollToSandbox={handleScrollToSandbox}
-      />
-
-      {/* Simple Demo Booking Modal */}
-      <BookDemoModal
-        isOpen={isDemoModalOpen}
-        onClose={() => setIsDemoModalOpen(false)}
-        initialPlan={selectedPlanForDemo}
-      />
+      <Footer onOpenBookDemo={openDemo} />
+      <BookDemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
     </div>
   );
 }
