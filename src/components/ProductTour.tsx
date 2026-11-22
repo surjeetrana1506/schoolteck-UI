@@ -57,37 +57,41 @@ export const ProductTour: React.FC = () => {
 
         <div id="tour-panel" role="tabpanel" aria-labelledby={`tab-${group.id}`}>
           <p className="text-center text-slate-600 mb-6">{group.intro}</p>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
-            <ul className="lg:col-span-4 flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible -mx-4 px-4 lg:mx-0 lg:px-0 pb-2 lg:pb-0 snap-x">
-              {group.items.map((i) => {
-                const active = i.id === item.id;
-                return (
-                  <li key={i.id} className="shrink-0 snap-start">
-                    <button
-                      onClick={() => setItemIds({ ...itemIds, [group.id]: i.id })}
-                      aria-pressed={active}
-                      className={`text-left rounded-xl border px-4 py-3 transition-all cursor-pointer w-56 lg:w-full ${
-                        active ? 'bg-white border-indigo-400 shadow-sm' : 'bg-white/60 border-transparent hover:bg-white hover:border-slate-200'
-                      }`}
-                    >
-                      <span className={`block text-sm font-bold ${active ? 'text-indigo-700' : 'text-slate-900'}`}>{i.title}</span>
-                      <span className={`block text-sm text-slate-600 mt-0.5 ${active ? '' : 'lg:hidden'}`}>{i.text}</span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
+          <ul className="flex sm:flex-wrap sm:justify-center gap-2 overflow-x-auto sm:overflow-visible -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0 snap-x max-w-5xl sm:mx-auto">
+            {group.items.map((i) => {
+              const active = i.id === item.id;
+              return (
+                <li key={i.id} className="shrink-0 snap-start">
+                  <button
+                    onClick={() => setItemIds({ ...itemIds, [group.id]: i.id })}
+                    aria-pressed={active}
+                    className={`whitespace-nowrap rounded-full border px-3.5 py-1.5 text-sm font-semibold transition-all cursor-pointer ${
+                      active
+                        ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm'
+                        : 'bg-white border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-700'
+                    }`}
+                  >
+                    {i.title}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
 
-            <div className="lg:col-span-8 lg:sticky lg:top-24">
-              {group.device === 'browser' ? (
-                <BrowserFrame key={item.id} shot={item.shot} />
-              ) : (
-                <div className="flex justify-center">
-                  <PhoneFrame key={item.id} shot={item.shot} className="w-64 sm:w-72" />
-                </div>
-              )}
+          <p className="mt-5 mb-6 text-center text-slate-700 max-w-2xl mx-auto min-h-[3rem]" aria-live="polite">
+            <span className="font-bold text-slate-900">{item.title}: </span>
+            {item.text}
+          </p>
+
+          {group.device === 'browser' ? (
+            <div className="max-w-5xl mx-auto">
+              <BrowserFrame key={item.id} shot={item.shot} />
             </div>
-          </div>
+          ) : (
+            <div className="flex justify-center">
+              <PhoneFrame key={item.id} shot={item.shot} className="w-64 sm:w-72" />
+            </div>
+          )}
         </div>
       </div>
     </section>
