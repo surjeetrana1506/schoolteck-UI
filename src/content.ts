@@ -11,70 +11,90 @@ export const CONTACT = {
 
 export type Shot = { src: string; alt: string };
 
+/** One chapter of a tour clip: what it shows and where it plays (seconds). */
 export type TourItem = {
   id: string;
   title: string;
   text: string;
-  shot: Shot;
+  at: [start: number, end: number];
 };
 
+/** A silent, looping clip cut from the demo video, with chapters. */
 export type TourGroup = {
   id: 'office' | 'parent' | 'teacher';
   label: string;
   intro: string;
-  device: 'browser' | 'phone';
+  video: string;
+  poster: string;
+  alt: string;
   items: TourItem[];
 };
 
-const screen = (name: string, alt: string): Shot => ({ src: `${import.meta.env.BASE_URL}screens/${name}.webp`, alt });
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+const screen = (name: string, alt: string): Shot => ({ src: asset(`screens/${name}.webp`), alt });
+
+export const HERO = {
+  dashboard: screen('dashboard', 'Schoolteck office dashboard with key numbers and items needing attention'),
+  parentHome: screen('p-home', 'Parent app home screen with tiles for attendance, results and fees'),
+};
 
 export const TOUR: TourGroup[] = [
   {
     id: 'office',
     label: 'School office',
     intro: 'The web console your office, principal and admissions desk use every day.',
-    device: 'browser',
+    video: asset('video/office.mp4'),
+    poster: asset('video/office.webp'),
+    alt: 'A walk through the Schoolteck office console with a sample school',
     items: [
-      { id: 'dashboard', title: 'Dashboard', text: 'Students, fees collected, teachers and parents on the app — plus what needs attention today.', shot: screen('dashboard', 'Schoolteck office dashboard with key numbers and items needing attention') },
-      { id: 'students', title: 'Students', text: 'Every student and class in one list. Enrol one at a time or import your spreadsheet.', shot: screen('students', 'Student list with class, admission number and app status') },
-      { id: 'profile', title: 'Student profile', text: 'Details, parents, fees, bus, documents and consent for one child, with full history.', shot: screen('profile', 'A student profile with details, parents, fees and school bus') },
-      { id: 'record-payment', title: 'Record a payment', text: 'Cash, UPI, cheque, bank transfer or card — recorded at the counter in seconds.', shot: screen('record-payment', 'Recording a ₹14,700 UPI fee payment') },
-      { id: 'receipt', title: 'Numbered receipts', text: 'Every payment gets the next receipt number for the year, printed on your letterhead.', shot: screen('receipt', 'Printable fee receipt on the school letterhead') },
-      { id: 'transport', title: 'Transport', text: 'Buses, drivers, routes and stops on a map, with seat counts and expiring papers flagged.', shot: screen('transport', 'Transport page with a bus route drawn on a map') },
-      { id: 'notices', title: 'Notices', text: 'A notice to the whole school or one class, with photos. Copy it to WhatsApp or print it too.', shot: screen('notices', 'Writing a notice to the whole school') },
-      { id: 'calendar', title: 'Calendar', text: 'Holidays, events, PTMs and exams — for the whole school or one class.', shot: screen('calendar', 'School calendar with holidays, exams and a PTM') },
-      { id: 'timetable', title: 'Timetable', text: 'Each class’s week, period by period. Double-booked teachers are flagged.', shot: screen('timetable', 'Class timetable with a double-booking warning') },
-      { id: 'exams', title: 'Exams & results', text: 'Set up exams, teachers enter marks, and parents see results once you publish.', shot: screen('exams', 'Exams page showing marks entered per subject') },
-      { id: 'chat', title: 'Teacher–parent messages', text: 'One-to-one messages with the office able to read, step in or close a conversation.', shot: screen('chat', 'A conversation between a parent and a class teacher') },
-      { id: 'activity', title: 'Activity log', text: 'Who changed what, and when — for every payment, notice and record.', shot: screen('activity', 'Activity log listing recent changes with who made them') },
-      { id: 'admissions', title: 'Admissions', text: 'Enquiries from your website in one list, with stages and follow-up dates.', shot: screen('admissions', 'Admissions list of enquiries with stages and follow-ups') },
+      { id: 'dashboard', title: 'Dashboard', text: 'Students, fees collected, teachers and parents on the app — plus what needs attention today.', at: [0, 27.7] },
+      { id: 'students', title: 'Students', text: 'Every student and class in one list. Enrol one at a time or import your spreadsheet.', at: [27.7, 32.6] },
+      { id: 'profile', title: 'Student profile', text: 'Details, parents, fees, bus, documents and consent for one child, with full history.', at: [32.6, 47] },
+      { id: 'record-payment', title: 'Record a payment', text: 'Cash, UPI, cheque, bank transfer or card — recorded at the counter in seconds.', at: [65, 78.2] },
+      { id: 'receipt', title: 'Numbered receipts', text: 'Every payment gets the next receipt number for the year, printed on your letterhead.', at: [78.2, 88.4] },
+      { id: 'transport', title: 'Transport', text: 'Buses, drivers, routes and stops on a map, with seat counts and expiring papers flagged.', at: [88.4, 106] },
+      { id: 'notices', title: 'Notices', text: 'A notice to the whole school or one class, with photos. Copy it to WhatsApp or print it too.', at: [106, 123] },
+      { id: 'calendar', title: 'Calendar', text: 'Holidays, events, PTMs and exams — for the whole school or one class.', at: [123, 132] },
+      { id: 'timetable', title: 'Timetable', text: 'Each class’s week, period by period. Double-booked teachers are flagged.', at: [132, 141] },
+      { id: 'leave', title: 'Leave', text: 'Parents apply in the app; the class teacher or the office approves, and attendance follows.', at: [141, 150] },
+      { id: 'exams', title: 'Exams & results', text: 'Set up exams, teachers enter marks, and parents see results once you publish.', at: [150, 163.2] },
+      { id: 'chat', title: 'Teacher–parent messages', text: 'One-to-one messages with the office able to read, step in or close a conversation.', at: [163.2, 168.8] },
+      { id: 'activity', title: 'Activity log', text: 'Who changed what, and when — for every payment, notice and record.', at: [168.8, 177] },
+      { id: 'admissions', title: 'Admissions', text: 'An enquiry form for your website, and every enquiry in one list with stages and follow-up dates.', at: [191.5, 232] },
     ],
   },
   {
     id: 'parent',
     label: 'Parent app',
     intro: 'Everything about their child on their phone — for each child, if they have more than one.',
-    device: 'phone',
+    video: asset('video/parent.mp4'),
+    poster: asset('video/parent.webp'),
+    alt: 'A walk through the Schoolteck parent app',
     items: [
-      { id: 'p-home', title: 'Home', text: 'Attendance, homework, results, calendar, fees and new notices at a glance.', shot: screen('p-home', 'Parent app home screen with tiles for attendance, results and fees') },
-      { id: 'p-attendance', title: 'Attendance', text: 'The month on a calendar: present, absent, late and leave, with holidays shaded.', shot: screen('p-attendance', 'Monthly attendance calendar in the parent app') },
-      { id: 'p-fees', title: 'Fees & receipts', text: 'What’s due, what’s paid, and every receipt — shareable as a PDF.', shot: screen('p-fees', 'Fees screen with receipts in the parent app') },
-      { id: 'p-diary', title: 'School diary', text: 'Every notice in one place: pinned items, categories, search and photos.', shot: screen('p-diary', 'School diary with pinned and categorised notices') },
-      { id: 'p-chat', title: 'Messages', text: 'A direct line to the class teacher — with quiet hours at night.', shot: screen('p-chat', 'A parent’s conversation with the class teacher') },
-      { id: 'p-results', title: 'Results', text: 'Marks and grades for each published exam, and the year’s percentage.', shot: screen('p-results', 'Exam results with grades in the parent app') },
-      { id: 'p-calendar', title: 'Calendar', text: 'Holidays, events and PTMs for their child’s class.', shot: screen('p-calendar', 'School calendar in the parent app') },
-      { id: 'p-timetable', title: 'Timetable', text: 'Their child’s week, period by period, with the teacher for each subject.', shot: screen('p-timetable', 'Class timetable in the parent app') },
-      { id: 'p-leave', title: 'Leave', text: 'Apply for leave in seconds and see when the teacher approves it.', shot: screen('p-leave', 'Leave application approved by the teacher') },
+      { id: 'p-home', title: 'Home', text: 'Attendance, homework, results, calendar, fees and new notices at a glance.', at: [0, 5.5] },
+      { id: 'p-attendance', title: 'Attendance', text: 'The month on a calendar: present, absent, late and leave, with holidays shaded.', at: [5.5, 16.5] },
+      { id: 'p-fees', title: 'Fees & receipts', text: 'What’s due, what’s paid, and every receipt — shareable as a PDF.', at: [16.5, 23.5] },
+      { id: 'p-diary', title: 'School diary', text: 'Every notice in one place: pinned items, categories, search and photos.', at: [23.5, 33.5] },
+      { id: 'p-chat', title: 'Messages', text: 'A direct line to the class teacher — with quiet hours at night.', at: [33.5, 45.5] },
+      { id: 'p-results', title: 'Results', text: 'Marks and grades for each published exam, and the year’s percentage.', at: [45.5, 53.5] },
+      { id: 'p-calendar', title: 'Calendar', text: 'Holidays, events and PTMs for their child’s class.', at: [53.5, 60.5] },
+      { id: 'p-timetable', title: 'Timetable', text: 'Their child’s week, period by period, with the teacher for each subject.', at: [60.5, 68.5] },
+      { id: 'p-leave', title: 'Leave', text: 'Apply for leave in seconds and see when the teacher approves it.', at: [68.5, 75.5] },
+      { id: 'p-privacy', title: 'Privacy', text: 'Parents give consent in the app and can ask to withdraw it.', at: [75.5, 89] },
     ],
   },
   {
     id: 'teacher',
     label: 'Teacher app',
     intro: 'Only their own classes — attendance, homework, marks and messages.',
-    device: 'phone',
+    video: asset('video/teacher.mp4'),
+    poster: asset('video/teacher.webp'),
+    alt: 'A walk through the Schoolteck teacher app',
     items: [
-      { id: 't-home', title: 'My classes', text: 'Today’s classes, what’s not marked yet, messages and leave requests waiting.', shot: screen('t-home', 'Teacher app home with today’s classes') },
-      { id: 't-attendance', title: 'Attendance', text: 'Everyone starts present — tap only the absentees and save. Parents see it straight away.', shot: screen('t-attendance', 'Marking attendance for a whole class in the teacher app') },
+      { id: 't-signin', title: 'Sign in', text: 'Find the school, then a one-time code to their mobile — no password to forget.', at: [0, 11] },
+      { id: 't-home', title: 'My classes', text: 'Today’s classes, what’s not marked yet, messages and leave requests waiting.', at: [11, 19] },
+      { id: 't-attendance', title: 'Attendance', text: 'Everyone starts present — tap only the absentees and save. Parents see it straight away.', at: [19, 36] },
+      { id: 't-chat', title: 'Messages', text: 'Only with parents of children in their own classes, with quiet hours at night.', at: [36, 46] },
     ],
   },
 ];

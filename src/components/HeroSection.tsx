@@ -1,10 +1,9 @@
 import React from 'react';
 import { ArrowRight, MapPin, PlayCircle, ShieldCheck, Smartphone } from 'lucide-react';
-import { TOUR } from '../content';
+import { HERO } from '../content';
 import { BrowserFrame, PhoneFrame } from './Brand';
 
-const dashboard = TOUR[0].items[0].shot;
-const parentHome = TOUR[1].items[0].shot;
+const { dashboard, parentHome } = HERO;
 
 export const HeroSection: React.FC<{ onOpenBookDemo: () => void }> = ({ onOpenBookDemo }) => (
   <section id="top" className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-gradient-to-b from-white via-slate-50/50 to-slate-100/60 border-b border-slate-200">
@@ -41,7 +40,7 @@ export const HeroSection: React.FC<{ onOpenBookDemo: () => void }> = ({ onOpenBo
             className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-base shadow-xs transition-all flex items-center justify-center gap-2"
           >
             <PlayCircle className="w-4 h-4 text-indigo-600" aria-hidden="true" />
-            See the real screens
+            Watch it in action
           </a>
         </div>
 
