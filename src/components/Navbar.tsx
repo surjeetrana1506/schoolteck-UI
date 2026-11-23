@@ -20,18 +20,20 @@ export const Navbar: React.FC<{ onOpenBookDemo: () => void }> = ({ onOpenBookDem
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-white/95 backdrop-blur-md border-b ${
-        isScrolled ? 'border-slate-200 shadow-xs py-3' : 'border-slate-200/60 py-4'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="fixed top-0 inset-x-0 z-40 px-3 sm:px-4 pt-3">
+      <div
+        className={`max-w-6xl mx-auto rounded-2xl border transition-all duration-300 px-4 sm:px-5 ${
+          isScrolled || menuOpen
+            ? 'bg-ink/75 backdrop-blur-xl border-white/10 shadow-2xl shadow-black/40 py-2.5'
+            : 'bg-transparent border-transparent py-3.5'
+        }`}
+      >
         <div className="flex items-center justify-between">
           <Logo />
 
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600" aria-label="Main">
+          <nav className="hidden md:flex items-center gap-1 text-sm font-medium text-slate-300" aria-label="Main">
             {LINKS.map((l) => (
-              <a key={l.href} href={l.href} className="hover:text-slate-900 transition-colors">
+              <a key={l.href} href={l.href} className="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-colors">
                 {l.label}
               </a>
             ))}
@@ -39,15 +41,15 @@ export const Navbar: React.FC<{ onOpenBookDemo: () => void }> = ({ onOpenBookDem
 
           <button
             onClick={onOpenBookDemo}
-            className="hidden sm:flex px-4 py-2 rounded-lg text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 shadow-xs transition-all items-center gap-1.5 cursor-pointer active:scale-95"
+            className="hidden sm:flex px-4 py-2 rounded-full text-sm font-bold text-ink bg-white hover:bg-slate-200 transition-all items-center gap-1.5 cursor-pointer active:scale-95"
           >
             Book a free demo
-            <ArrowRight className="w-4 h-4 text-rose-400" aria-hidden="true" />
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </button>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="p-2 rounded-lg text-slate-600 hover:text-slate-900 md:hidden"
+            className="p-2 rounded-lg text-slate-300 hover:text-white md:hidden"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
           >
@@ -56,10 +58,10 @@ export const Navbar: React.FC<{ onOpenBookDemo: () => void }> = ({ onOpenBookDem
         </div>
 
         {menuOpen && (
-          <div className="md:hidden mt-3 pt-3 border-t border-slate-200 space-y-2 pb-3">
-            <nav className="flex flex-col space-y-1 text-base font-medium text-slate-700" aria-label="Main">
+          <div className="md:hidden mt-3 pt-3 border-t border-white/10 space-y-2 pb-2">
+            <nav className="flex flex-col text-base font-medium text-slate-200" aria-label="Main">
               {LINKS.map((l) => (
-                <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} className="py-2 hover:text-indigo-600">
+                <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} className="py-2.5 hover:text-white">
                   {l.label}
                 </a>
               ))}
@@ -69,10 +71,10 @@ export const Navbar: React.FC<{ onOpenBookDemo: () => void }> = ({ onOpenBookDem
                 onOpenBookDemo();
                 setMenuOpen(false);
               }}
-              className="w-full py-3 rounded-lg text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 flex items-center justify-center gap-1.5"
+              className="w-full py-3 rounded-full text-sm font-bold text-ink bg-white flex items-center justify-center gap-1.5"
             >
               Book a free demo
-              <ArrowRight className="w-4 h-4 text-rose-400" aria-hidden="true" />
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </button>
           </div>
         )}

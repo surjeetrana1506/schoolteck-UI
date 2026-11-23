@@ -1,64 +1,85 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { GraduationCap } from 'lucide-react';
-import type { Shot } from '../content';
 
 export const Logo: React.FC<{ tagline?: boolean }> = ({ tagline = true }) => (
   <a href="#top" className="flex items-center gap-2.5" aria-label="Schoolteck home">
-    <span className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-indigo-600 flex items-center justify-center text-white shadow-sm">
+    <span className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-rose-500/20">
       <GraduationCap className="w-5 h-5" aria-hidden="true" />
     </span>
     <span>
-      <span className="text-lg font-black tracking-tight text-slate-900">
-        School<span className="bg-gradient-to-r from-rose-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent">teck</span>
+      <span className="text-lg font-extrabold tracking-tight text-white">
+        School<span className="text-brand">teck</span>
       </span>
-      {tagline && <span className="text-[10px] text-slate-500 block -mt-1 font-medium">School management for Indian schools</span>}
+      {tagline && <span className="text-[10px] text-slate-400 block -mt-1 font-medium">School management for Indian schools</span>}
     </span>
   </a>
 );
 
-/** A console screenshot in a simple browser window. */
-export const BrowserFrame: React.FC<{ shot: Shot; eager?: boolean }> = ({ shot, eager }) => (
-  <figure className="rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-xl">
-    <div className="flex items-center gap-1.5 px-3 py-2 bg-slate-100 border-b border-slate-200" aria-hidden="true">
-      <span className="w-2.5 h-2.5 rounded-full bg-rose-400" />
-      <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-      <span className="ml-3 flex-1 max-w-xs h-5 rounded-md bg-white border border-slate-200 text-[10px] text-slate-400 flex items-center px-2">
-        Schoolteck · School office
-      </span>
-    </div>
-    <a href={shot.src} target="_blank" rel="noopener" title="Open full size" className="block">
-      <img
-        src={shot.src}
-        alt={shot.alt}
-        width={1600}
-        height={800}
-        loading={eager ? 'eager' : 'lazy'}
-        className="w-full h-auto block"
-      />
-    </a>
-  </figure>
-);
-
-/** An app screenshot in a phone outline. */
-export const PhoneFrame: React.FC<{ shot: Shot; eager?: boolean; className?: string }> = ({ shot, eager, className = '' }) => (
-  <figure className={`rounded-[2rem] border-[6px] border-slate-900 bg-slate-900 shadow-2xl overflow-hidden ${className}`}>
-    <img
-      src={shot.src}
-      alt={shot.alt}
-      width={508}
-      height={1110}
-      loading={eager ? 'eager' : 'lazy'}
-      className="w-full h-auto block rounded-[1.6rem]"
-    />
-  </figure>
-);
-
 export const SectionLabel: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-800 shadow-2xs">
-    <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-    <span>{children}</span>
+  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-300 backdrop-blur">
+    <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-amber-400 to-rose-500" />
+    {children}
   </div>
+);
+
+/** Heading block shared by every section. */
+export const SectionHead: React.FC<{ label: string; title: React.ReactNode; text?: string }> = ({ label, title, text }) => (
+  <Reveal className="text-center max-w-2xl mx-auto mb-12">
+    <SectionLabel>{label}</SectionLabel>
+    <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.05]">{title}</h2>
+    {text && <p className="mt-4 text-base sm:text-lg text-slate-400">{text}</p>}
+  </Reveal>
+);
+
+/** An accent word in the italic serif. */
+export const Accent: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <span className="font-serif italic font-normal text-brand pr-1">{children}</span>
+);
+
+/** Fades its children in once they scroll into view. */
+export const Reveal: React.FC<{ children: React.ReactNode; className?: string; delay?: number; as?: 'div' | 'li' }> = ({
+  children,
+  className = '',
+  delay = 0,
+  as: Tag = 'div',
+}) => {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          el.classList.add('is-in');
+          io.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <Tag ref={ref as never} className={`reveal ${className}`} style={{ '--delay': `${delay}ms` } as React.CSSProperties}>
+      {children}
+    </Tag>
+  );
+};
+
+/** Tracks the pointer so a `.spotlight` card can glow beneath it. */
+export const trackPointer = (e: React.PointerEvent<HTMLElement>) => {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty('--x', `${e.clientX - r.left}px`);
+  e.currentTarget.style.setProperty('--y', `${e.clientY - r.top}px`);
+};
+
+export const PrimaryButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({ className = '', children, ...props }) => (
+  <button
+    {...props}
+    className={`group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-bold text-base text-white cursor-pointer
+      bg-gradient-to-r from-rose-500 via-fuchsia-600 to-indigo-600 shadow-[0_0_40px_-8px] shadow-fuchsia-500/60
+      hover:shadow-[0_0_60px_-6px] hover:shadow-fuchsia-500/80 transition-all active:scale-[0.98] ${className}`}
+  >
+    {children}
+  </button>
 );

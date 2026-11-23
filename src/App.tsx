@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
+import { Marquee } from './components/Marquee';
 import { ProductTour } from './components/ProductTour';
 import { Modules } from './components/Modules';
 import { Trust, Faq } from './components/TrustAndFaq';
@@ -13,14 +14,15 @@ export default function App() {
   const openDemo = () => setIsDemoOpen(true);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col selection:bg-indigo-600 selection:text-white antialiased">
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:px-3 focus:py-2 focus:rounded-lg">
+    <div className="min-h-screen bg-ink text-slate-100 flex flex-col selection:bg-fuchsia-600 selection:text-white antialiased overflow-x-clip">
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-ink focus:px-3 focus:py-2 focus:rounded-lg">
         Skip to content
       </a>
       <Navbar onOpenBookDemo={openDemo} />
 
       <main id="main" className="flex-1">
         <HeroSection onOpenBookDemo={openDemo} />
+        <Marquee />
         <ProductTour />
         <Modules onOpenBookDemo={openDemo} />
         <Trust />

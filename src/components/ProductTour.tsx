@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Monitor, Smartphone, GraduationCap, Pause, Play } from 'lucide-react';
 import { TOUR, type TourGroup, type TourItem } from '../content';
-import { SectionLabel } from './Brand';
+import { Accent, SectionLabel } from './Brand';
 
 const ICONS: Record<TourGroup['id'], React.ElementType> = { office: Monitor, parent: Smartphone, teacher: GraduationCap };
 
@@ -86,18 +86,18 @@ export const ProductTour: React.FC = () => {
   };
 
   return (
-    <section id="tour" className="py-14 sm:py-16 bg-slate-100 border-b border-slate-200 scroll-mt-16">
+    <section id="tour" className="relative py-20 sm:py-28 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-6">
+        <div className="text-center max-w-2xl mx-auto mb-7">
           <SectionLabel>The real product</SectionLabel>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">See exactly what your school gets.</h2>
-          <p className="mt-2 text-base sm:text-lg text-slate-600">
+          <h2 className="mt-3 text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.05]">See exactly what <Accent>your school gets.</Accent></h2>
+          <p className="mt-3 text-base sm:text-lg text-slate-400">
             Recorded in Schoolteck itself, with a sample school’s data — not mock-ups.
           </p>
         </div>
 
         <div role="tablist" aria-label="Part of Schoolteck" className="flex justify-center mb-5">
-          <div className="inline-flex p-1 bg-white rounded-xl border border-slate-200 shadow-xs">
+          <div className="inline-flex p-1 bg-white/5 rounded-full border border-white/10 backdrop-blur">
             {TOUR.map((g) => {
               const Icon = ICONS[g.id];
               const active = g.id === groupId;
@@ -109,8 +109,8 @@ export const ProductTour: React.FC = () => {
                   aria-selected={active}
                   aria-controls="tour-panel"
                   onClick={() => selectGroup(g.id)}
-                  className={`flex items-center gap-2 px-3 sm:px-5 py-2 rounded-lg text-sm font-bold transition-all cursor-pointer ${
-                    active ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                  className={`flex items-center gap-2 px-3 sm:px-5 py-2 rounded-full text-sm font-bold transition-all cursor-pointer ${
+                    active ? 'bg-white text-ink shadow' : 'text-slate-300 hover:text-white'
                   }`}
                 >
                   <Icon className="w-4 h-4 hidden sm:block" aria-hidden="true" />
@@ -134,16 +134,17 @@ export const ProductTour: React.FC = () => {
           id="tour-panel"
           role="tabpanel"
           aria-labelledby={`tab-${group.id}`}
-          className="mx-auto"
+          className="relative mx-auto"
           style={{ maxWidth: 'min(64rem, max(36rem, calc((100svh - 25rem) * 1.6)))' }}
         >
-          <figure className="rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200 bg-slate-900 shadow-xl">
+          <div className="absolute -inset-x-8 inset-y-0 bg-gradient-to-r from-indigo-600/20 via-fuchsia-600/15 to-rose-500/20 blur-3xl" aria-hidden="true" />
+          <figure className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-white/15 bg-ink-2 shadow-2xl shadow-black/60">
             {group.id === 'office' && (
-              <div className="flex items-center gap-1.5 px-3 py-2 bg-slate-100 border-b border-slate-200" aria-hidden="true">
-                <span className="w-2.5 h-2.5 rounded-full bg-rose-400" />
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-                <span className="ml-3 flex-1 max-w-xs h-5 rounded-md bg-white border border-slate-200 text-[10px] text-slate-400 flex items-center px-2">
+              <div className="flex items-center gap-1.5 px-3 py-2 bg-white/[0.04] border-b border-white/10" aria-hidden="true">
+                <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                <span className="mx-auto px-3 h-5 rounded-md bg-white/5 text-[10px] text-slate-400 flex items-center px-2">
                   Schoolteck · School office
                 </span>
               </div>
@@ -175,7 +176,7 @@ export const ProductTour: React.FC = () => {
                 {playing ? <Pause className="w-4 h-4" aria-hidden="true" /> : <Play className="w-4 h-4 ml-0.5" aria-hidden="true" />}
               </button>
               <div className="absolute inset-x-0 bottom-0 h-1 bg-white/20" aria-hidden="true">
-                <div className="h-full bg-indigo-500" style={{ width: `${progress * 100}%` }} />
+                <div className="h-full bg-gradient-to-r from-fuchsia-500 to-indigo-500" style={{ width: `${progress * 100}%` }} />
               </div>
             </div>
           </figure>
@@ -190,7 +191,7 @@ export const ProductTour: React.FC = () => {
                       onClick={() => selectItem(i)}
                       aria-current={active ? 'step' : undefined}
                       className={`whitespace-nowrap rounded-full px-3 py-1 text-[13px] font-semibold transition-colors cursor-pointer ${
-                        active ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-white hover:text-indigo-700'
+                        active ? 'bg-gradient-to-r from-fuchsia-600 to-indigo-600 text-white' : 'text-slate-400 hover:bg-white/5 hover:text-white'
                       }`}
                     >
                       {i.title}
@@ -200,8 +201,8 @@ export const ProductTour: React.FC = () => {
               })}
             </ul>
           </div>
-          <p className="mt-2 text-center text-sm text-slate-600 max-w-2xl mx-auto min-h-[2.5rem]">
-            <span className="font-semibold text-slate-900">{item.title}: </span>
+          <p className="mt-2 text-center text-sm text-slate-400 max-w-2xl mx-auto min-h-[2.5rem]">
+            <span className="font-semibold text-white">{item.title}: </span>
             {item.text}
           </p>
         </div>

@@ -1,49 +1,61 @@
-import React from 'react';
-import { ArrowRight, CheckCircle, Smartphone, UploadCloud } from 'lucide-react';
-import { STEPS } from '../content';
-import { SectionLabel } from './Brand';
+import React from "react";
+import { ArrowRight, CheckCircle, Smartphone, UploadCloud } from "lucide-react";
+import { STEPS } from "../content";
+import { Accent, PrimaryButton, Reveal, SectionHead } from "./Brand";
 
-const STYLES = [
-  { icon: UploadCloud, style: 'bg-rose-50 border-rose-200 text-rose-600' },
-  { icon: CheckCircle, style: 'bg-amber-50 border-amber-200 text-amber-600' },
-  { icon: Smartphone, style: 'bg-indigo-50 border-indigo-200 text-indigo-600' },
-];
+const ICONS = [UploadCloud, CheckCircle, Smartphone];
 
-export const HowItWorks: React.FC<{ onOpenBookDemo: () => void }> = ({ onOpenBookDemo }) => (
-  <section id="how-it-works" className="py-20 bg-slate-50 border-b border-slate-200 scroll-mt-16">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center max-w-2xl mx-auto mb-14">
-        <SectionLabel>Getting started</SectionLabel>
-        <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">We set it up with you.</h2>
-        <p className="mt-3 text-base sm:text-lg text-slate-600">No servers to install and nothing technical for your staff to do.</p>
+export const HowItWorks: React.FC<{ onOpenBookDemo: () => void }> = ({
+  onOpenBookDemo,
+}) => (
+  <section id="how-it-works" className="py-24 sm:py-32 scroll-mt-16">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHead
+        label="Getting started"
+        title={
+          <>
+            We set it up <Accent>with you.</Accent>
+          </>
+        }
+        text="No servers to install and nothing technical for your staff to do."
+      />
+
+      <div className="relative">
+        <div
+          className="hidden md:block absolute top-8 left-[16%] right-[16%] h-px bg-gradient-to-r from-rose-500/0 via-fuchsia-500/60 to-indigo-500/0"
+          aria-hidden="true"
+        />
+        <ol className="relative grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
+          {STEPS.map((s, idx) => {
+            const Icon = ICONS[idx];
+            return (
+              <Reveal
+                as="li"
+                key={s.title}
+                delay={idx * 120}
+                className="relative text-center"
+              >
+                <div className="mx-auto w-16 h-16 rounded-2xl bg-ink-2 border border-white/15 flex items-center justify-center shadow-[0_0_40px_-10px] shadow-fuchsia-500/60">
+                  <Icon className="w-7 h-7 text-white" aria-hidden="true" />
+                </div>
+                <div className="mt-5 text-xs font-bold tracking-[0.2em] text-fuchsia-300">
+                  STEP 0{idx + 1}
+                </div>
+                <h3 className="mt-2 text-xl font-bold text-white">{s.title}</h3>
+                <p className="mt-2 text-slate-400 leading-relaxed max-w-xs mx-auto">
+                  {s.text}
+                </p>
+              </Reveal>
+            );
+          })}
+        </ol>
       </div>
 
-      <ol className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {STEPS.map((s, idx) => {
-          const { icon: Icon, style } = STYLES[idx];
-          return (
-            <li key={s.title} className="bg-white p-7 rounded-3xl border border-slate-200 shadow-xs">
-              <div className="flex items-center justify-between mb-5">
-                <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center ${style}`}>
-                  <Icon className="w-6 h-6" aria-hidden="true" />
-                </div>
-                <span className="text-2xl font-black text-slate-300 font-mono" aria-hidden="true">0{idx + 1}</span>
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">{s.title}</h3>
-              <p className="text-base text-slate-600 leading-relaxed">{s.text}</p>
-            </li>
-          );
-        })}
-      </ol>
-
-      <div className="mt-12 text-center">
-        <button
-          onClick={onOpenBookDemo}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-base shadow-sm transition-all cursor-pointer"
-        >
+      <div className="mt-14 text-center">
+        <PrimaryButton onClick={onOpenBookDemo}>
           Book a free demo
-          <ArrowRight className="w-4 h-4 text-rose-400" aria-hidden="true" />
-        </button>
+          <ArrowRight className="w-4 h-4" aria-hidden="true" />
+        </PrimaryButton>
       </div>
     </div>
   </section>

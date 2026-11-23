@@ -9,8 +9,6 @@ export const CONTACT = {
   place: 'Indore, Madhya Pradesh, India',
 };
 
-export type Shot = { src: string; alt: string };
-
 /** One chapter of a tour clip: what it shows and where it plays (seconds). */
 export type TourItem = {
   id: string;
@@ -30,12 +28,17 @@ export type TourGroup = {
 };
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
-const screen = (name: string, alt: string): Shot => ({ src: asset(`screens/${name}.webp`), alt });
-
-export const HERO = {
-  dashboard: screen('dashboard', 'Schoolteck office dashboard with key numbers and items needing attention'),
-  parentHome: screen('p-home', 'Parent app home screen with tiles for attendance, results and fees'),
+export const HERO_MEDIA = {
+  office: { video: asset('video/office.mp4'), poster: asset('video/office.webp') },
+  phone: { video: asset('video/parent-phone.mp4'), poster: asset('video/parent-phone.webp') },
 };
+
+/** The moving strip under the hero. */
+export const MARQUEE = [
+  'Students & classes', 'Fees & receipts', 'UPI, cash & cheque', 'Notices', 'Parent app', 'Teacher app', 'Attendance',
+  'Homework', 'Exam results', 'Timetable', 'School calendar', 'Leave', 'Transport', 'Teacher–parent messages',
+  'Admissions', 'Activity log', 'DPDP consent',
+];
 
 export const TOUR: TourGroup[] = [
   {
