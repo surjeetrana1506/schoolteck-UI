@@ -23,7 +23,6 @@ export type TourItem = {
 export type TourGroup = {
   id: 'office' | 'parent' | 'teacher';
   label: string;
-  intro: string;
   video: string;
   poster: string;
   alt: string;
@@ -42,31 +41,29 @@ export const TOUR: TourGroup[] = [
   {
     id: 'office',
     label: 'School office',
-    intro: 'The web console your office, principal and admissions desk use every day.',
     video: asset('video/office.mp4'),
     poster: asset('video/office.webp'),
     alt: 'A walk through the Schoolteck office console with a sample school',
     items: [
-      { id: 'dashboard', title: 'Dashboard', text: 'Students, fees collected, teachers and parents on the app — plus what needs attention today.', at: [0, 27.7] },
-      { id: 'students', title: 'Students', text: 'Every student and class in one list. Enrol one at a time or import your spreadsheet.', at: [27.7, 32.6] },
-      { id: 'profile', title: 'Student profile', text: 'Details, parents, fees, bus, documents and consent for one child, with full history.', at: [32.6, 47] },
-      { id: 'record-payment', title: 'Record a payment', text: 'Cash, UPI, cheque, bank transfer or card — recorded at the counter in seconds.', at: [65, 78.2] },
-      { id: 'receipt', title: 'Numbered receipts', text: 'Every payment gets the next receipt number for the year, printed on your letterhead.', at: [78.2, 88.4] },
-      { id: 'transport', title: 'Transport', text: 'Buses, drivers, routes and stops on a map, with seat counts and expiring papers flagged.', at: [88.4, 106] },
-      { id: 'notices', title: 'Notices', text: 'A notice to the whole school or one class, with photos. Copy it to WhatsApp or print it too.', at: [106, 123] },
-      { id: 'calendar', title: 'Calendar', text: 'Holidays, events, PTMs and exams — for the whole school or one class.', at: [123, 132] },
-      { id: 'timetable', title: 'Timetable', text: 'Each class’s week, period by period. Double-booked teachers are flagged.', at: [132, 141] },
-      { id: 'leave', title: 'Leave', text: 'Parents apply in the app; the class teacher or the office approves, and attendance follows.', at: [141, 150] },
-      { id: 'exams', title: 'Exams & results', text: 'Set up exams, teachers enter marks, and parents see results once you publish.', at: [150, 163.2] },
-      { id: 'chat', title: 'Teacher–parent messages', text: 'One-to-one messages with the office able to read, step in or close a conversation.', at: [163.2, 168.8] },
-      { id: 'activity', title: 'Activity log', text: 'Who changed what, and when — for every payment, notice and record.', at: [168.8, 177] },
-      { id: 'admissions', title: 'Admissions', text: 'An enquiry form for your website, and every enquiry in one list with stages and follow-up dates.', at: [191.5, 232] },
+      { id: 'dashboard', title: 'Dashboard', text: 'Students, fees collected, teachers and parents on the app — plus what needs attention today.', at: [0, 23.5] },
+      { id: 'students', title: 'Students', text: 'Every student and class in one list. Enrol one at a time or import your spreadsheet.', at: [23.5, 28.4] },
+      { id: 'profile', title: 'Student profile', text: 'Details, parents, fees, bus, documents and consent for one child, with full history.', at: [28.4, 42.8] },
+      { id: 'record-payment', title: 'Record a payment', text: 'Cash, UPI, cheque, bank transfer or card — recorded at the counter in seconds.', at: [60.8, 74] },
+      { id: 'receipt', title: 'Numbered receipts', text: 'Every payment gets the next receipt number for the year, printed on your letterhead.', at: [74, 84.2] },
+      { id: 'transport', title: 'Transport', text: 'Buses, drivers, routes and stops on a map, with seat counts and expiring papers flagged.', at: [84.2, 101.8] },
+      { id: 'notices', title: 'Notices', text: 'A notice to the whole school or one class, with photos. Copy it to WhatsApp or print it too.', at: [101.8, 118.8] },
+      { id: 'calendar', title: 'Calendar', text: 'Holidays, events, PTMs and exams — for the whole school or one class.', at: [118.8, 127.8] },
+      { id: 'timetable', title: 'Timetable', text: 'Each class’s week, period by period. Double-booked teachers are flagged.', at: [127.8, 136.8] },
+      { id: 'leave', title: 'Leave', text: 'Parents apply in the app; the class teacher or the office approves, and attendance follows.', at: [136.8, 147.3] },
+      { id: 'exams', title: 'Exams & results', text: 'Set up exams, teachers enter marks, and parents see results once you publish.', at: [147.3, 159] },
+      { id: 'chat', title: 'Teacher–parent messages', text: 'One-to-one messages with the office able to read, step in or close a conversation.', at: [159, 164.6] },
+      { id: 'activity', title: 'Activity log', text: 'Who changed what, and when — for every payment, notice and record.', at: [164.6, 172.8] },
+      { id: 'admissions', title: 'Admissions', text: 'An enquiry form for your website, and every enquiry in one list with stages and follow-up dates.', at: [187.3, 227.8] },
     ],
   },
   {
     id: 'parent',
     label: 'Parent app',
-    intro: 'Everything about their child on their phone — for each child, if they have more than one.',
     video: asset('video/parent.mp4'),
     poster: asset('video/parent.webp'),
     alt: 'A walk through the Schoolteck parent app',
@@ -86,7 +83,6 @@ export const TOUR: TourGroup[] = [
   {
     id: 'teacher',
     label: 'Teacher app',
-    intro: 'Only their own classes — attendance, homework, marks and messages.',
     video: asset('video/teacher.mp4'),
     poster: asset('video/teacher.webp'),
     alt: 'A walk through the Schoolteck teacher app',
