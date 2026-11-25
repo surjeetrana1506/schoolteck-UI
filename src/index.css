@@ -3,24 +3,25 @@
 @theme {
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
-  --color-ink: #07070d;
-  --color-ink-2: #0d0d18;
+  --color-ink: #0f172a;
+  --color-ink-2: #1e293b;
+  --color-paper: #fafaf7;
 }
 
 html {
   scroll-behavior: smooth;
-  background: var(--color-ink);
+  background: var(--color-paper);
 }
 
 /* The brand gradient, used for accent words and glows. */
 .text-brand {
-  background: linear-gradient(100deg, #fbbf24 0%, #fb7185 35%, #a78bfa 70%, #818cf8 100%);
+  background: linear-gradient(100deg, #d97706 0%, #e11d48 35%, #7c3aed 70%, #4f46e5 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Slowly drifting colour blobs behind dark sections. */
+/* Slowly drifting colour washes behind the hero and the closing call to action. */
 .aurora {
   position: absolute;
   inset: 0;
@@ -35,7 +36,7 @@ html {
   height: 60vmax;
   border-radius: 50%;
   filter: blur(90px);
-  opacity: 0.35;
+  opacity: 0.2;
   animation: drift 22s ease-in-out infinite alternate;
 }
 .aurora::before {
@@ -48,7 +49,7 @@ html {
   top: -25vmax;
   right: -20vmax;
   animation-delay: -11s;
-  opacity: 0.25;
+  opacity: 0.14;
 }
 @keyframes drift {
   to {
@@ -62,8 +63,8 @@ html {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgb(15 23 42 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(15 23 42 / 0.05) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 30%, transparent 75%);
 }
@@ -72,8 +73,9 @@ html {
 .spotlight {
   position: relative;
   background:
-    radial-gradient(420px circle at var(--x, 50%) var(--y, -100%), rgb(129 140 248 / 0.14), transparent 45%),
-    rgb(255 255 255 / 0.03);
+    radial-gradient(420px circle at var(--x, 50%) var(--y, -100%), rgb(129 140 248 / 0.10), transparent 45%),
+    #ffffff;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px -12px rgb(15 23 42 / 0.12);
 }
 .spotlight::before {
   content: "";
@@ -81,7 +83,7 @@ html {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: radial-gradient(300px circle at var(--x, 50%) var(--y, -100%), rgb(167 139 250 / 0.7), rgb(255 255 255 / 0.08) 60%);
+  background: radial-gradient(300px circle at var(--x, 50%) var(--y, -100%), rgb(139 92 246 / 0.6), rgb(15 23 42 / 0.09) 60%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;

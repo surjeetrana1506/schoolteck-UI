@@ -14,8 +14,8 @@ export default function App() {
   const openDemo = () => setIsDemoOpen(true);
 
   return (
-    <div className="min-h-screen bg-ink text-slate-100 flex flex-col selection:bg-fuchsia-600 selection:text-white antialiased overflow-x-clip">
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-ink focus:px-3 focus:py-2 focus:rounded-lg">
+    <div className="min-h-screen bg-paper text-slate-700 flex flex-col selection:bg-fuchsia-600 selection:text-white antialiased overflow-x-clip">
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-ink focus:text-white focus:px-3 focus:py-2 focus:rounded-lg">
         Skip to content
       </a>
       <Navbar onOpenBookDemo={openDemo} />
