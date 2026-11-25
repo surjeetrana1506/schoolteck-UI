@@ -37,19 +37,19 @@ export const Modules: React.FC<{ onOpenBookDemo: () => void }> = ({ onOpenBookDe
                 <span className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${tint} flex items-center justify-center shadow-lg`}>
                   <Icon className="w-5 h-5 text-white" aria-hidden="true" />
                 </span>
-                <h3 className={`mt-5 font-bold text-white ${big ? 'text-2xl sm:text-3xl' : 'text-lg'}`}>{c.title}</h3>
-                <p className={`mt-2 text-slate-400 ${big ? 'text-base sm:text-lg max-w-md' : 'text-sm'}`}>{c.text}</p>
+                <h3 className={`mt-5 font-bold text-ink ${big ? 'text-2xl sm:text-3xl' : 'text-lg'}`}>{c.title}</h3>
+                <p className={`mt-2 text-slate-600 ${big ? 'text-base sm:text-lg max-w-md' : 'text-sm'}`}>{c.text}</p>
                 {big && (
                   <div className="mt-auto pt-8">
                     <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">Recorded at the counter</div>
                     <ul className="mt-3 flex flex-wrap gap-2">
                       {PAYMENT_METHODS.map((m) => (
-                        <li key={m} className="px-3 py-1.5 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-emerald-300 text-sm font-semibold">
+                        <li key={m} className="px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm font-semibold">
                           {m}
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-6 font-mono text-4xl sm:text-5xl font-bold tracking-tight text-white/90">
+                    <div className="mt-6 font-mono text-4xl sm:text-5xl font-bold tracking-tight text-ink">
                       R/2026-27/<span className="text-brand">000001</span>
                     </div>
                     <div className="mt-1 text-sm text-slate-500">Gapless receipt numbers, per school and financial year</div>
@@ -65,26 +65,26 @@ export const Modules: React.FC<{ onOpenBookDemo: () => void }> = ({ onOpenBookDe
         <div onPointerMove={trackPointer} className="spotlight rounded-3xl p-6 sm:p-10">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
             <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-rose-400">Optional modules</div>
-              <h3 className="mt-2 text-2xl sm:text-3xl font-bold text-white">Switch on what your school needs</h3>
+              <div className="text-xs font-bold uppercase tracking-wider text-rose-600">Optional modules</div>
+              <h3 className="mt-2 text-2xl sm:text-3xl font-bold text-ink">Switch on what your school needs</h3>
             </div>
-            <p className="text-slate-400 max-w-md">Turned on for your school by us, any time. Switch one off and its data is kept, just hidden.</p>
+            <p className="text-slate-600 max-w-md">Turned on for your school by us, any time. Switch one off and its data is kept, just hidden.</p>
           </div>
 
           <ul className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-1">
             {MODULES.map((m, i) => {
               const Icon = MODULE_ICONS[i];
               return (
-                <li key={m.title} className="flex items-start gap-4 py-4 border-b border-white/5">
-                  <Icon className="w-5 h-5 text-slate-400 shrink-0 mt-0.5" aria-hidden="true" />
+                <li key={m.title} className="flex items-start gap-4 py-4 border-b border-slate-100">
+                  <Icon className="w-5 h-5 text-slate-500 shrink-0 mt-0.5" aria-hidden="true" />
                   <div className="flex-1">
-                    <div className="font-semibold text-white">{m.title}</div>
-                    <div className="text-sm text-slate-400">{m.text}</div>
+                    <div className="font-semibold text-ink">{m.title}</div>
+                    <div className="text-sm text-slate-600">{m.text}</div>
                   </div>
                   {/* A switch that flips on, one after another, when the card scrolls in. */}
                   <span
                     aria-hidden="true"
-                    className="relative shrink-0 w-10 h-6 rounded-full bg-white/10 [.is-in_&]:bg-gradient-to-r [.is-in_&]:from-fuchsia-600 [.is-in_&]:to-indigo-600 transition-colors duration-500"
+                    className="relative shrink-0 w-10 h-6 rounded-full bg-slate-200 [.is-in_&]:bg-gradient-to-r [.is-in_&]:from-fuchsia-600 [.is-in_&]:to-indigo-600 transition-colors duration-500"
                     style={{ transitionDelay: `${400 + i * 180}ms` }}
                   >
                     <span

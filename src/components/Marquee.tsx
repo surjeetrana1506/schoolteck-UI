@@ -3,7 +3,7 @@ import { MARQUEE } from '../content';
 
 /** An endless strip of what Schoolteck covers. The list is doubled so the loop is seamless. */
 export const Marquee: React.FC = () => (
-  <section aria-label="What Schoolteck covers" className="relative border-y border-white/10 bg-white/[0.02] py-5 overflow-hidden marquee">
+  <section aria-label="What Schoolteck covers" className="relative border-y border-slate-200 bg-white/70 py-5 overflow-hidden marquee">
     <ul className="marquee-track flex w-max gap-10 text-lg sm:text-xl font-semibold text-slate-500 whitespace-nowrap">
       {[...MARQUEE, ...MARQUEE].map((m, i) => (
         <li key={i} aria-hidden={i >= MARQUEE.length} className="flex items-center gap-10">

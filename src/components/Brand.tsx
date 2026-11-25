@@ -7,16 +7,16 @@ export const Logo: React.FC<{ tagline?: boolean }> = ({ tagline = true }) => (
       <GraduationCap className="w-5 h-5" aria-hidden="true" />
     </span>
     <span>
-      <span className="text-lg font-extrabold tracking-tight text-white">
+      <span className="text-lg font-extrabold tracking-tight text-ink">
         School<span className="text-brand">teck</span>
       </span>
-      {tagline && <span className="text-[10px] text-slate-400 block -mt-1 font-medium">School management for Indian schools</span>}
+      {tagline && <span className="text-[10px] text-slate-500 block -mt-1 font-medium">School management for Indian schools</span>}
     </span>
   </a>
 );
 
 export const SectionLabel: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-300 backdrop-blur">
+  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600 shadow-sm">
     <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-amber-400 to-rose-500" />
     {children}
   </div>
@@ -26,8 +26,8 @@ export const SectionLabel: React.FC<{ children: React.ReactNode }> = ({ children
 export const SectionHead: React.FC<{ label: string; title: React.ReactNode; text?: string }> = ({ label, title, text }) => (
   <Reveal className="text-center max-w-2xl mx-auto mb-12">
     <SectionLabel>{label}</SectionLabel>
-    <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.05]">{title}</h2>
-    {text && <p className="mt-4 text-base sm:text-lg text-slate-400">{text}</p>}
+    <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold text-ink tracking-tight leading-[1.05]">{title}</h2>
+    {text && <p className="mt-4 text-base sm:text-lg text-slate-600">{text}</p>}
   </Reveal>
 );
 
@@ -77,8 +77,8 @@ export const PrimaryButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElemen
   <button
     {...props}
     className={`group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-bold text-base text-white cursor-pointer
-      bg-gradient-to-r from-rose-500 via-fuchsia-600 to-indigo-600 shadow-[0_0_40px_-8px] shadow-fuchsia-500/60
-      hover:shadow-[0_0_60px_-6px] hover:shadow-fuchsia-500/80 transition-all active:scale-[0.98] ${className}`}
+      bg-gradient-to-r from-rose-500 via-fuchsia-600 to-indigo-600 shadow-[0_10px_30px_-10px] shadow-fuchsia-600/50
+      hover:shadow-[0_14px_40px_-10px] hover:shadow-fuchsia-600/60 transition-all active:scale-[0.98] ${className}`}
   >
     {children}
   </button>

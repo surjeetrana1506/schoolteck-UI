@@ -35,14 +35,14 @@ export const HowItWorks: React.FC<{ onOpenBookDemo: () => void }> = ({
                 delay={idx * 120}
                 className="relative text-center"
               >
-                <div className="mx-auto w-16 h-16 rounded-2xl bg-ink-2 border border-white/15 flex items-center justify-center shadow-[0_0_40px_-10px] shadow-fuchsia-500/60">
-                  <Icon className="w-7 h-7 text-white" aria-hidden="true" />
+                <div className="mx-auto w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center shadow-[0_10px_30px_-10px] shadow-fuchsia-500/40">
+                  <Icon className="w-7 h-7 text-indigo-600" aria-hidden="true" />
                 </div>
-                <div className="mt-5 text-xs font-bold tracking-[0.2em] text-fuchsia-300">
+                <div className="mt-5 text-xs font-bold tracking-[0.2em] text-fuchsia-600">
                   STEP 0{idx + 1}
                 </div>
-                <h3 className="mt-2 text-xl font-bold text-white">{s.title}</h3>
-                <p className="mt-2 text-slate-400 leading-relaxed max-w-xs mx-auto">
+                <h3 className="mt-2 text-xl font-bold text-ink">{s.title}</h3>
+                <p className="mt-2 text-slate-600 leading-relaxed max-w-xs mx-auto">
                   {s.text}
                 </p>
               </Reveal>
